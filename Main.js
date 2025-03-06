@@ -20,6 +20,16 @@ class AddressBook{
             console.log(`contact with name "${name} not found!"`);
         }
     }
+    deleteContact(name){
+        let index=this.contacts.findIndex(c =>c.first_name ===name)
+        if(index !== -1){
+            this.contacts.splice(index,1)
+            console.log(`Contact "$ {name}"deleted sucessfully`)
+        }
+        else{
+            console.log(`Contact with name "${name}" not found `)
+        }
+    }
 }
     const addressBook=new AddressBook();
 
@@ -28,6 +38,7 @@ let contact1=new AddressBookContact("Kanak","Rajput","185A","Bhopal","Madhya pra
 let contact2=new AddressBookContact("Som","Rajput","73 Avenue","Itarsi","Madhya Pradesh",46115,9187536781,"som@example.com")
 addressBook.addContact(contact1)
 addressBook.addContact(contact2)
+addressBook.deleteContact("Som")
 addressBook.findAndEditContact("Kanak",{phone_number:123456789,city:"jabalpur"})
 addressBook.findAndEditContact("Som",{phone_number:987654321,city:"Itarsi"})
 //addressBook.displayContact()
