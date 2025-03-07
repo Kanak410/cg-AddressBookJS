@@ -95,6 +95,11 @@ class AddressBook{
     }, {});
     console.log("Contacts count by state:", stateCount);
   }
+  sortContactsBystateZipcity(){
+    const sortedList=[...this.contacts].sort((a,b) =>a.state.localeCompare(b.state) || a.zipcode-b.zipcode || a.city.localeCompare(b.city));
+    console.log("\n Contact sorted by city,zip of city");
+    sortedList.forEach(c =>console.log(c.toString()));
+  }
 
 
 }
@@ -126,3 +131,4 @@ addressBook.viewPersonsByState();
 addressBook.countByCity();
 addressBook.countByState();
 addressBook.sortContactsByName();
+addressBook.sortContactsBystateZipcity();
