@@ -38,6 +38,7 @@ class AddressBook{
     getContactCount(){
         return this.contacts.reduce((count) => count+1,0)
     }
+ UC9_getPersonByCityState
     viewPersonsByCity() {
       let cityMap = this.contacts.reduce((acc, contact) => {
         acc[contact.city] = acc[contact.city] || [];
@@ -58,6 +59,23 @@ class AddressBook{
     }
   }
 
+    searchByCity(city) {
+        let peopleInCity = this.contacts
+          .filter(contact => contact.city.toLowerCase() === city.toLowerCase())
+          .map(contact => contact.first_name + " " + contact.last_name);
+        console.log(`People in ${city}:`, peopleInCity.length > 0 ? peopleInCity.join(", ") : "No contacts found");
+      }
+      searchByState(state) {
+        let peopleInState = this.contacts
+          .filter(contact => contact.state.toLowerCase() === state.toLowerCase()) 
+          .map(contact => contact.first_name + " " + contact.last_name);
+        console.log(`People in ${state}:`, peopleInState.length > 0 ? peopleInState.join(", ") : "No contacts found");
+      }
+    
+    }
+    
+main
+
     const addressBook=new AddressBook();
 
 
@@ -70,12 +88,22 @@ addressBook.addContact(contact1)
 addressBook.addContact(contact2)
 addressBook.addContact(contact3)
 addressBook.addContact(contact4)
-addressBook.deleteContact("Som")
+addressBook.addContact(contact5)
+//addressBook.deleteContact("Som")
 addressBook.findAndEditContact("Kanak",{phone_number:123456789,city:"jabalpur"})
 addressBook.findAndEditContact("Som",{phone_number:987654321,city:"Itarsi"})
 addressBook.deleteContact("diss")
 console.log(`Total contacts: ${addressBook.getContactCount()}`);
+ UC9_getPersonByCityState
 addressBook.viewPersonsByCity();
 addressBook.viewPersonsByState();
+
+addressBook.searchByCity("Bhopal");
+addressBook.searchByState("Madhya Pradesh");
+
+
+
+
+ main
 //addressBook.displayContact()
 

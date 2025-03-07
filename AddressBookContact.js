@@ -21,7 +21,7 @@ export class AddressBookContact{
         return address;
       }
       validateZip(zipcode){
-        let zipRegex = /^[a-zA-Z0-9\s]{3,}$/
+        let zipRegex = /^\d{3}\s?\d{3}$/
         if(!zipRegex.test(zipcode))throw new Error ('Zip Code is invalid !!')
             return zipcode
       }
