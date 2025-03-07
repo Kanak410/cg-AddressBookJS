@@ -1,7 +1,7 @@
 export class AddressBookContact{
     constructor(...params){
         this.first_name=this.validateName(params[0],"First Name");
-        this.Last_name=this.validateName(params[1],"Last Name");
+        this.last_name=this.validateName(params[1],"Last Name");
         this.address=this.validateAddress(params[2],"Address");
         this.city=this.validateAddress(params[3],"City");
         this.state=this.validateAddress(params[4],"State");
@@ -36,6 +36,6 @@ export class AddressBookContact{
             return email
       }
       toString(){
-        return `Name:${this.first_name} ${this.Last_name}\n Address:${this.address} ${this.city} ${this.state} ${this.zipcode}\n phone:${this.phone_number}\n Email:${this.email}`
+        return `Name:${this.first_name} ${this.last_name}\n Address:${this.address} ${this.city} ${this.state} ${this.zipcode}\n phone:${this.phone_number}\n Email:${this.email}`
       }
     }
