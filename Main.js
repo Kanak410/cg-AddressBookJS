@@ -38,6 +38,27 @@ class AddressBook{
     getContactCount(){
         return this.contacts.reduce((count) => count+1,0)
     }
+ UC9_getPersonByCityState
+    viewPersonsByCity() {
+      let cityMap = this.contacts.reduce((acc, contact) => {
+        acc[contact.city] = acc[contact.city] || [];
+        acc[contact.city].push(contact.first_name + " " + contact.last_name);
+        return acc;
+      }, {});
+      console.log("People grouped by City:", cityMap);
+    }
+  
+  
+    viewPersonsByState() {
+      let stateMap = this.contacts.reduce((acc, contact) => {
+        acc[contact.state] = acc[contact.state] || [];
+        acc[contact.state].push(contact.first_name + " " + contact.last_name);
+        return acc;
+      }, {});
+      console.log("People grouped by State:", stateMap);
+    }
+  }
+
     searchByCity(city) {
         let peopleInCity = this.contacts
           .filter(contact => contact.city.toLowerCase() === city.toLowerCase())
@@ -53,6 +74,7 @@ class AddressBook{
     
     }
     
+main
 
     const addressBook=new AddressBook();
 
@@ -72,11 +94,16 @@ addressBook.findAndEditContact("Kanak",{phone_number:123456789,city:"jabalpur"})
 addressBook.findAndEditContact("Som",{phone_number:987654321,city:"Itarsi"})
 addressBook.deleteContact("diss")
 console.log(`Total contacts: ${addressBook.getContactCount()}`);
+ UC9_getPersonByCityState
+addressBook.viewPersonsByCity();
+addressBook.viewPersonsByState();
+
 addressBook.searchByCity("Bhopal");
 addressBook.searchByState("Madhya Pradesh");
 
 
 
 
+ main
 //addressBook.displayContact()
 
