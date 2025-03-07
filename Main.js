@@ -53,6 +53,13 @@ class AddressBook{
       .map(contact => contact.first_name + " " + contact.last_name);
     console.log(`People in ${state}:`, peopleInState.length > 0 ? peopleInState.join(", ") : "No contacts found");
   }
+  sortContactsByName(){
+    const sortedList =[...this.contacts].sort((a,b) => 
+      a.first_name.localeCompare(b.first_name) || a.last_name.localeCompare(b.last_name)
+  );
+    console.log("\n contacts sorted alphabetically by name (using Stream-like approach):");
+    sortedList.forEach(contact => console.log(contact.toString()));
+  }
 
   viewPersonsByCity() {
     let cityMap = this.contacts.reduce((acc, contact) => {
@@ -88,8 +95,9 @@ class AddressBook{
     }, {});
     console.log("Contacts count by state:", stateCount);
   }
-}
 
+
+}
 const addressBook = new AddressBook();
 
 let contact1=new AddressBookContact("Kanak","Rajput","185A","Bhopal","Madhya pradesh",462021,6263733333,"kanak@example.com")
@@ -117,3 +125,4 @@ addressBook.viewPersonsByState();
 
 addressBook.countByCity();
 addressBook.countByState();
+addressBook.sortContactsByName();
